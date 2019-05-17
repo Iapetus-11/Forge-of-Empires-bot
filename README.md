@@ -3,4 +3,4 @@ A bot made in python with pyautogui that collects gold, supplies and does some o
 
 TODO:
 Collect soldiers/millitary stuff from army buildings ingame.
-Make it faste.
+Make it faster.
