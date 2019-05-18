@@ -1,5 +1,5 @@
 # Forge-of-Empires-bot
-A bot made in python with pyautogui that collects gold, supplies and does some other stuff for Forge of Empires
+A bot made in python with pyautogui that collects gold, supplies and does some other stuff in Forge of Empires. The bot uses image recognition to automatically detect resources and collect them unlike some other bots that depend on a schedule and specific movements.
 
 TODO:
 
