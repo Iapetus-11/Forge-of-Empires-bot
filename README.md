@@ -5,7 +5,7 @@ A bot made in python with pyautogui that collects gold, supplies and does some o
 
 Collect soldiers/millitary stuff from army buildings ingame, \
 make scanning faster, \
-add detection and correction for ingame glitches and announcments. \
+add detection and correction for ingame glitches and announcments.
 
 
 
