@@ -1,0 +1,5 @@
+#for extended functionality in pyautogui
+opencv-python==4.1.0.25
+
+#for image recognition and control over mouse and keyboard
+PyAutoGUI==0.9.42
