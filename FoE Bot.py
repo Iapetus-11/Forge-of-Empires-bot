@@ -50,13 +50,11 @@ def processIdleOutput(output):
     sleep(randint(12,25)/100)
     pyautogui.click()
     sleep(randint(70,90)/100)
-    pyautogui.typewrite('1')
-    pyautogui.typewrite(['2', '3', '4', '5'])
+    pyautogui.typewrite(['1', '2', '3', '4', '5'])
     pyautogui.moveRel(0, ydiff2, duration=randint(5,15)/20)
     sleep(randint(6,12)/10/7)
     pyautogui.click()
-    pyautogui.typewrite('1')
-    pyautogui.typewrite(['2', '3', '4', '5'])
+    pyautogui.typewrite(['1', '2', '3', '4', '5'])
     print("Bot has restarted a production building.")
     sleep(randint(80,100)/100)
     pyautogui.typewrite(['esc']) #for some reason [] are required around 'esc' to actually press the ESC button
@@ -78,79 +76,74 @@ def processButtonOutput(output,suppressESC):
 
 def worker1(lock): #gold icons
     while True:
-        if not open("pause.txt", "r").read() == "STOP":
-            output = pyautogui.locateOnScreen('gold1.png', confidence=0.905)
+        output = pyautogui.locateOnScreen('gold1.png', confidence=0.905)
+        lock.acquire()
+        print("gold1:", output)
+        lock.release()
+
+        if output == None:
+            output = pyautogui.locateOnScreen('gold2.png', confidence=0.905)
             lock.acquire()
-            print("gold1:", output)
+            print("gold2:", output)
             lock.release()
 
-            if output == None:
-                output = pyautogui.locateOnScreen('gold2.png', confidence=0.905)
-                lock.acquire()
-                print("gold2:", output)
-                lock.release()
-
-            if not output == None:
-                processOutput(output)
+        if not output == None:
+            processOutput(output)
             
 def worker2(lock): #supplies icons
     while True:
-        if not open("pause.txt", "r").read() == "STOP":
-            output = pyautogui.locateOnScreen('supplies1.png', confidence=0.805)
+        output = pyautogui.locateOnScreen('supplies1.png', confidence=0.805)
+        lock.acquire()
+        print("supplies1:", output)
+        lock.release()
+
+        if output== None:
+            output = pyautogui.locateOnScreen('supplies2.png', confidence=0.820)
             lock.acquire()
-            print("supplies1:", output)
+            print("supplies2:", output)
             lock.release()
 
-            if output== None:
-                output = pyautogui.locateOnScreen('supplies2.png', confidence=0.820)
-                lock.acquire()
-                print("supplies2:", output)
-                lock.release()
-
-            if not output == None:
-                processOutput(output)
+        if not output == None:
+            processOutput(output)
             
 def worker3(lock): #idle building icons
     while True:
-        if not open("pause.txt", "r").read() == "STOP":
-            output = pyautogui.locateOnScreen('idle1.png', confidence=0.545)
-            lock.acquire()
-            print("idle1:", output)
-            lock.release()
-                
-            if not output == None:
-                processIdleOutput(output)
+        output = pyautogui.locateOnScreen('idle1.png', confidence=0.545)
+        lock.acquire()
+        print("idle1:", output)
+        lock.release()
+            
+        if not output == None:
+            processIdleOutput(output)
             
 def worker4(lock): #goods boxes icons
     while True:
-        if not open("pause.txt", "r").read() == "STOP":
-            output = pyautogui.locateOnScreen('goods1.png', confidence=0.895)
-            lock.acquire()
-            print("goods1:", output)
-            lock.release()
-                
-            if not output == None:
-                processIdleOutput(output)
+        output = pyautogui.locateOnScreen('goods1.png', confidence=0.895)
+        lock.acquire()
+        print("goods1:", output)
+        lock.release()
+            
+        if not output == None:
+            processIdleOutput(output)
             
 def worker5(lock): #ingame buttons
     suppressESC = False
     while True:
-        if not open("pause.txt", "r").read() == "STOP":
-            output = pyautogui.locateOnScreen('button1.png', confidence=0.800, grayscale=True)
-            lock.acquire()
-            print("button1:", output)
-            lock.release()
+        output = pyautogui.locateOnScreen('button1.png', confidence=0.800, grayscale=True)
+        lock.acquire()
+        print("button1:", output)
+        lock.release()
 
-            if output == None:
-                output = pyautogui.locateOnScreen('button2.png', confidence=0.800, grayscale=True)
-                lock.acquire()
-                print("button2:", output)
-                lock.release()
-                
-            if not output == None:
-                processButtonOutput(output, suppressESC)
-            else:
-                sleep(5)
+        if output == None:
+            output = pyautogui.locateOnScreen('button2.png', confidence=0.800, grayscale=True)
+            lock.acquire()
+            print("button2:", output)
+            lock.release()
+            
+        if not output == None:
+            processButtonOutput(output, suppressESC)
+        else:
+            sleep(5)
 
 #multithreading
 if collectGold == True:
