@@ -82,7 +82,7 @@ def worker1(lock): #gold icons
         lock.release()
 
         if output == None:
-            output = pyautogui.locateOnScreen('gold2.png', confidence=0.905)
+            output = pyautogui.locateOnScreen('gold2.png', confidence=0.895)
             lock.acquire()
             print("gold2:", output)
             lock.release()
@@ -118,7 +118,7 @@ def worker3(lock): #idle building icons
             
 def worker4(lock): #goods boxes icons
     while True:
-        output = pyautogui.locateOnScreen('goods1.png', confidence=0.895)
+        output = pyautogui.locateOnScreen('goods1.png', confidence=0.885)
         lock.acquire()
         print("goods1:", output)
         lock.release()
